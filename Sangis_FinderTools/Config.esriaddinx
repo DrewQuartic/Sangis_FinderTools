@@ -1,0 +1,96 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Sangis_FinderTools</Name>
+  <AddInID>{4d6fda3a-8c06-45a1-8dfd-5a24510c8b02}</AddInID>
+  <Description>This Add In contains the finder tools for SanGIS warehouse data</Description>
+  <Version>1.2</Version>
+  <Image>Images\Sangis_FinderTools.png</Image>
+  <Author>Quartic</Author>
+  <Company>SanGIS</Company>
+  <Date>3/14/2012</Date>
+  <Targets>
+    <Target name="Desktop" version="10.1" />
+  </Targets>
+  <AddIn language="CLR" library="Sangis_FinderTools.dll" namespace="Sangis_FinderTools">
+    <ArcMap>
+      <Commands>
+        <Button id="SanGIS_Sangis_FinderTools_btnAddSangisPubDataToMap" class="btnAddSangisPubDataToMap" message="This tool adds in selected Sangis Published data layers to the map" caption="Add Sangis Published Data to Map" tip="Add Sangis Published Data to the Map" category="SanGIS_Finder" image="Images\btnAddSangisPubDataToMap.png">
+          <Help heading="Add Sangis PubData To Map">Uses the Sangis Data_Publication_Info table to select non-restricted feature classes to load.  Uses the current mxds connection to load those layers.</Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnResetView" onDemand="true" class="btnResetView" message="Zooms to County Boundary and turns on only default layers" caption="Reset View" tip="Reset View" category="SanGIS_Finder" image="Images\btnResetView.png">
+          <Help heading="Reset View">Zooms to county boundary and turns on a limited number of default layers.  Requires: SANGIS.JUR_COUNTY to run, turns on: SANGIS.JUR_COUNTY, SANGIS.JUR_MUNICIPAL, SANGIS.JUR_VICINITY, SANGIS.ROADS_FREEWAY, SANGIS.ROADS_HIGHWAY, and SANGIS.HYD_LAKE if they exist in the map.</Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnDeleteGraphics" class="btnDeleteGraphics" message="Delete all graphic elements added to the display (ie: lines, pionts, polys)" caption="Delete Graphics" tip="Delete Graphics" category="SanGIS_Finder" image="Images\btnDeleteGraphics.png">
+          <Help heading="Delete Graphics">Delete all graphic elements existing in the current active view. (ie: lines, pionts, polys, Anno)</Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnTurnOffAllLayers" class="btnTurnOffAllLayers" message="Turn off all layers in view" caption="Turn Off All Layers" tip="Turn off all layers in view" category="SanGIS_Finder" image="Images\btnTurnOffAllLayers.png">
+          <Help heading="Turn Off All Layers">Turns off all Layers in current active view.</Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnSearchRoad" class="btnSearchRoad" message="Search for Road" caption="Road" tip="Search for Road" category="SanGIS_Finder" image="Images\btnSearchRoad.png">
+          <Help heading="Search Road">Search for Road using address, name, or segid information.  Requires: SANGIS.ROADS_ALL</Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnSearchParcel" class="btnSearchParcel" message="Search for Parcel" caption="Parcel" tip="Search for Parcel" category="SanGIS_Finder" image="Images\btnSearchParcel.png">
+          <Help heading="Search Parcel">Search for Parcel using APN, ParcelID, or Address information.  Requires: SANGIS.PARCELS_ALL or SANGIS.PARCELS_ALL_NPC </Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnSearchTBPG" class="btnSearchTBPG" message="Search for Thomas Bros Page" caption="Thomas Bros" tip="Search for Thomas Bros Page" category="SanGIS_Finder" image="Images\btnSearchTBPG.png">
+          <Help heading="Search Road">Search for Thomas Brothers Grid.  Requires: SANGIS.GRID_PAGE_TB</Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnZoomCity" class="btnZoomCity" message="Zooms map to Chosen Jurisdiction" caption="Jurisdiction" tip="Zoom to a Jurisdiction" category="SanGIS_Finder" image="">
+          <Help heading="Zoom City">Zooms to San DIego City Boundary.  Requires: SANGIS.JUR_MUNICIPAL</Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnZoomCounty" class="btnZoomCounty" message="Zooms to SD County Boundary" caption="County" tip="Zoom to SD County" category="SanGIS_Finder" image="">
+          <Help heading="Zoom County">Zooms Map to San Diego County Boundary.   Requires: SANGIS.JUR_COUNTY </Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnZoomSDCity" class="btnZoomSDCity" message="Zooms to the  San Diego City Boundary" caption="SD City" tip="Zoom to SD City Bounds" category="SanGIS_Finder" image="">
+          <Help heading="Zoom SD City">Zooms to the San Diego City Boundaries.  Requires: SANGIS.JUR_MUNICIPAL</Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnSetActiveDF" onDemand="true" class="btnSetActiveDF" message="Activates the Data Frame containing the Finder Layer for searches" caption="Activate Finder Layer Dataframe" tip="Activate Finder Layer Dataframe" category="SanGIS_Finder" image="Images\btnSetActiveDF.png">
+          <Help heading="Activate Finder">Activates the Data Frame which contains the SANGIS.PARCELS_ALL or SANGIS.PARCELS_ALL_NPC.  </Help>
+        </Button>
+        <Button id="SanGIS_Sangis_FinderTools_btnUpdateDate" onDemand="true" class="btnUpdateDate" message="Update Plot Date And SanGIS Logo" caption="Update Date and Logo" tip="Update Plot Date and SanGIS Logo" category="SanGIS_Finder" image="Images\btnUpdateDate.png">
+          <Help heading="Update Date">Searches for the text: Plot Date in the layout view and updates it to todays date </Help>
+        </Button>
+        <ToolPalette id="SanGIS_Sangis_FinderTools_My_Tool_Palette" caption="My Tool Palette" category="Add-In Controls" isMenuStyle="false" columns="0">
+          <Items />
+        </ToolPalette>
+      </Commands>
+      <Menus>
+        <Menu id="SanGIS_Sangis_FinderTools_Search" caption="Search" isRootMenu="false">
+          <Items>
+            <Button refID="SanGIS_Sangis_FinderTools_btnSearchRoad" />
+            <Button refID="SanGIS_Sangis_FinderTools_btnSearchParcel" />
+            <Button refID="SanGIS_Sangis_FinderTools_btnSearchTBPG" />
+          </Items>
+        </Menu>
+        <Menu id="SanGIS_Sangis_FinderTools_Zoom" caption="Zoom" isRootMenu="false">
+          <Items>
+            <Button refID="SanGIS_Sangis_FinderTools_btnZoomSDCity" />
+            <Button refID="SanGIS_Sangis_FinderTools_btnZoomCounty" />
+            <Button refID="SanGIS_Sangis_FinderTools_btnZoomCity" />
+          </Items>
+        </Menu>
+      </Menus>
+      <Toolbars>
+        <Toolbar id="SanGIS_Sangis_FinderTools_SanGIS_Finder_Toolbar" caption="SanGIS Finder Toolbar" showInitially="false">
+          <Items>
+            <Button refID="SanGIS_Sangis_FinderTools_btnSetActiveDF" />
+            <Button refID="SanGIS_Sangis_FinderTools_btnAddSangisPubDataToMap" />
+            <Button refID="SanGIS_Sangis_FinderTools_btnResetView" />
+            <Button refID="SanGIS_Sangis_FinderTools_btnDeleteGraphics" />
+            <Button refID="SanGIS_Sangis_FinderTools_btnTurnOffAllLayers" />
+            <Button refID="SanGIS_Sangis_FinderTools_btnUpdateDate" />
+            <Menu refID="SanGIS_Sangis_FinderTools_Search" />
+            <Menu refID="SanGIS_Sangis_FinderTools_Zoom" />
+          </Items>
+        </Toolbar>
+      </Toolbars>
+      <DockableWindows>
+        <DockableWindow id="SanGIS_Sangis_FinderTools_frmSearchRoadMulti" class="frmSearchRoadMulti+AddinImpl" caption="Search Road Segments" image="Images\frmSearchRoadMulti.png">
+          <InitialPlacement height="350" width="235" state="hidden" position="left" />
+        </DockableWindow>
+        <DockableWindow id="SanGIS_Sangis_FinderTools_frmSearchParcelMulti" class="frmSearchParcelMulti+AddinImpl" caption="Search Parcels" image="Images\frmSearchParcelMulti.png">
+          <InitialPlacement height="320" width="235" state="hidden" position="left" />
+        </DockableWindow>
+      </DockableWindows>
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>
