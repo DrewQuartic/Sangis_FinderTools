@@ -13,6 +13,7 @@ Public Class Globals
     'Public Shared sJurList As String = "CB,CN,CO,CV,DM,EC,EN,ES,IB,LG,LM,NC,OC,PW,SD,SM,SO,ST,VS"
     'Public Shared sJurList As System.Array = ("CB","CN","CO",CV,DM,EC,EN,ES,IB,LG,LM,NC,OC,PW,SD,SM,SO,ST,VS)
     Public Shared sJurList = {"CB", "CN", "CO", "CV", "DM", "EC", "EN", "ES", "IB", "LG", "LM", "NC", "OC", "PW", "SD", "SM", "SO", "ST", "VS"}
+    Public Shared sDBName As String = "SDEP"
 
 
 #Region "Loop Through Layers"
@@ -210,6 +211,7 @@ Public Class Globals
 
             pCheckTable = pFeatWorkSpace.OpenTable(pTableName)
             If pCheckTable Is Nothing Then
+                pCheckTable = pFeatWorkSpace.OpenTable("SDEP." + pTableName)
                 MsgBox("Could not Load table: " & pTableLoad)
                 GetWorkspaceTable = Nothing
             Else
@@ -353,7 +355,7 @@ Public Class Globals
                 Do While Not (layer Is Nothing)
                     If layer.Valid Then
                         pDataset = layer
-                        If UCase(pDataset.BrowseName) = UCase(sName) Then
+                        If UCase(pDataset.BrowseName.Substring(pDataset.BrowseName.LastIndexOf(".") + 1)) = UCase(sName.Substring(sName.LastIndexOf(".") + 1)) Then
                             FindLayerDataFrame = pMxDoc.Maps.Item(f).Name
                             Exit For
                         End If

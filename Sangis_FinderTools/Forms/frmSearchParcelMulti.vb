@@ -616,4 +616,8 @@ Public Class frmSearchParcelMulti
     Private Sub txtRDName_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtRDName.TextChanged
         CheckEnabled()
     End Sub
+
+    Private Sub lblStatusIssue_Click(sender As System.Object, e As System.EventArgs) Handles lblStatusIssue.Click
+
+    End Sub
 End Class
