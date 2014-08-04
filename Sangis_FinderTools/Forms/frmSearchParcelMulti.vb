@@ -124,8 +124,11 @@ Public Class frmSearchParcelMulti
         'if the parcel layers do not exist, then disable in case they were remove after the menu was open
         If LoopThroughLayersAndGetFL(My.ArcMap.Document.ActiveView.FocusMap, "{E156D7E5-22AF-11D3-9F99-00C04F6BC78E}", "SANGIS.PARCELS_ALL_NPC") Is Nothing Then
             If LoopThroughLayersAndGetFL(My.ArcMap.Document.ActiveView.FocusMap, "{E156D7E5-22AF-11D3-9F99-00C04F6BC78E}", "SANGIS.PARCELS_ALL") Is Nothing Then
+                'If LoopThroughLayersAndGetFL(My.ArcMap.Document.ActiveView.FocusMap, "{E156D7E5-22AF-11D3-9F99-00C04F6BC78E}", "SDW.SANGIS.PARCELS_ALL") Is Nothing Then
                 lblStatusIssue.Visible = False
                 Me.Enabled = False
+
+
             Else
                 Me.Enabled = True
                 CheckEnabled()
@@ -618,6 +621,10 @@ Public Class frmSearchParcelMulti
     End Sub
 
     Private Sub lblStatusIssue_Click(sender As System.Object, e As System.EventArgs) Handles lblStatusIssue.Click
+
+    End Sub
+
+    Private Sub frmSearchParcelMulti_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

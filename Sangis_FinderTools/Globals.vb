@@ -14,6 +14,7 @@ Public Class Globals
     'Public Shared sJurList As System.Array = ("CB","CN","CO",CV,DM,EC,EN,ES,IB,LG,LM,NC,OC,PW,SD,SM,SO,ST,VS)
     Public Shared sJurList = {"CB", "CN", "CO", "CV", "DM", "EC", "EN", "ES", "IB", "LG", "LM", "NC", "OC", "PW", "SD", "SM", "SO", "ST", "VS"}
     Public Shared sDBName As String = "SDEP"
+    'Public Shared sDBName As String = "SDE"
 
 
 #Region "Loop Through Layers"
@@ -73,7 +74,7 @@ Public Class Globals
             Do While Not (layer Is Nothing)
                 If layer.Valid Then
                     pDataset = layer
-                    If pDataset.BrowseName = UCase(layerName) Then
+                    If pDataset.BrowseName = UCase(layerName) Or pDataset.BrowseName = UCase(sDBName + "." + layerName) Then
                         Return pDataset
                         Exit Function
                     End If
